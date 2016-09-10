@@ -1,13 +1,41 @@
+var index = 0;
+var weeks = [];
 $(function() {
   $("#container").swipe({
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-      $(this).text("You swiped " + direction);
+      if (direction == "left") {
+        index--;
+      }
+      if (direction == "right") {
+        index++;
+      }
+      if (index < 0) {
+        index = weeks.length - 1;
+      }
+      if (index > weeks.length) {
+        index = 0;
+      }
+      console.log("Index: " + index);
+      $("#image").attr("src", weeks[index].imageUrl);
     },
     threshold: 0
   });
 });
-window.onload = function() {
-  console.log("On load");
-  var backgroundImageUrl = "http://xbmc-rocks.com/NFLCurrentScoresImageServlet.png";
-  $("#container").css("background-image", "url(" + backgroundImageUrl + ")");
-}
+$.getJSON("/TextFeed2Images/JsonServlet?action=weeks", function(data) {
+  weeks = data;
+  console.log(weeks.length + " weeks Index: " + index);
+  for (index = 0 ; index < weeks.length && !weeks[index].current; index++) {
+    console.log(weeks[index].current);
+  }
+  console.log("index: " + index);
+  $('.toast').fadeIn(400).delay(3000).fadeOut(400);
+});
+
+
+function set_body_height() { // set body height = window height
+   $('body').height($(window).height());
+ }
+ $(document).ready(function() {
+   $(window).bind('resize', set_body_height);
+   set_body_height();
+ });
