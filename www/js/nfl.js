@@ -9,6 +9,9 @@ $(function() {
       if (direction == "right") {
         index++;
       }
+      if (direction == "down" || direction == "up") {
+        setImage();
+      }
       if (index < 0) {
         index = weeks.length - 1;
       }
@@ -16,7 +19,7 @@ $(function() {
         index = 0;
       }
       console.log("Index: " + index);
-      $("#image").attr("src", weeks[index].imageUrl);
+      setImage();
     },
     threshold: 0
   });
@@ -28,10 +31,12 @@ $.getJSON("/TextFeed2Images/JsonServlet?action=weeks", function(data) {
   console.log("index: " + index);
   $('.toast').fadeIn(400).delay(3000).fadeOut(400);
 });
-
+function setImage() {
+  $("#image").attr("src", weeks[index].imageUrl + "?epoch=" + (new Date).getTime());
+}
 function refreshIfCurrentWeek() {
   if (weeks[index].current) {
-    $("#image").attr("src", weeks[index].imageUrl + "?epoch=" + (new Date).getTime());
+    setImage();
   }
 }
 
