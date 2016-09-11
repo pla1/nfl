@@ -19,6 +19,7 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
       $scope.teams = data;
       $scope.restoreSettings();
       $scope.change();
+      $('.toast').fadeIn(400).delay(3000).fadeOut(400);
     }
   );
   $scope.change = function() {
@@ -40,8 +41,13 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
   }
   $(function() {
     $("#container").swipe({
+      tap: function(event, target) {
+        console.log(" tap");
+        location.href="index.html";
+      },
       swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-        console.log("BEFORE - Index team: " + $scope.settings.indexTeam + " index year: " + $scope.settings.indexYear);
+        console.log("BEFORE - Index team: " + $scope.settings.indexTeam + " index year: " + $scope.settings.indexYear + " direction: " + direction);
+
         if (direction == "left") {
           console.log("Left");
           $scope.settings.indexYear--;
@@ -76,7 +82,7 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
         $scope.change();
         $scope.$apply();
       },
-      threshold: 0
+      threshold: 50
     });
   });
 });

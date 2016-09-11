@@ -2,14 +2,21 @@ var index = 0;
 var weeks = [];
 $(function() {
   $("#container").swipe({
+    tap: function(event, target) {
+      console.log(" tap");
+      location.href="teams.html";
+    },
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
       if (direction == "left") {
+        console.log("Left");
         index--;
       }
       if (direction == "right") {
+        console.log("Right");
         index++;
       }
       if (direction == "down" || direction == "up") {
+        console.log("Down or up.");
         setImage();
       }
       if (index < 0) {
@@ -21,7 +28,7 @@ $(function() {
       console.log("Index: " + index);
       setImage();
     },
-    threshold: 0
+    threshold: 50
   });
 });
 $.getJSON("/TextFeed2Images/JsonServlet?action=weeks", function(data) {
@@ -31,9 +38,11 @@ $.getJSON("/TextFeed2Images/JsonServlet?action=weeks", function(data) {
   console.log("index: " + index);
   $('.toast').fadeIn(400).delay(3000).fadeOut(400);
 });
+
 function setImage() {
   $("#image").attr("src", weeks[index].imageUrl + "?epoch=" + (new Date).getTime());
 }
+
 function refreshIfCurrentWeek() {
   if (weeks[index].current) {
     setImage();
