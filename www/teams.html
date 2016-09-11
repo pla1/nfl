@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="app" ng-controller="Controller">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -7,13 +7,15 @@
   <link rel="icon" type="image/png" href="NFL256x256.png">
   <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
   <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-  <script type="text/javascript" src="js/nfl.js"></script>
-  <title>NFL Scores</title>
+  <script type="text/javascript" src="js/angular-1.5.js"></script>
+  <script type="text/javascript" src="js/teams.js"></script>
+  <title>NFL Teams</title>
 </head>
 
 <body>
+  <span ng-repeat="team in teams"><a href ng-click="team(this)">{{team.teamId}}</a>&nbsp;&nbsp;</span>
   <div id="container">
-    <img src="/NFLCurrentScoresImageServlet.png" id="image" class="center fit">
+    <img src="NFL256x256.png" id="image" class="center fit">
   </div>
   <div class='toast' style='display:none'>Swipe enabled</div>
 </body>
