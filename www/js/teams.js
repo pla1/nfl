@@ -6,7 +6,7 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
   $scope.settings = {};
   $scope.settings.year = new Date().getFullYear();
   $scope.settings.teamId = "CAR";
-  $scope.settings.imageUrl = "NFL256x256.png";
+  $scope.settings.imageUrl = null;
   $scope.settings.indexYear = 0;
   $scope.settings.indexTeam = 0;
   $http.get('/TextFeed2Images/JsonServlet?action=years').success(
@@ -19,7 +19,7 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
       $scope.teams = data;
       $scope.restoreSettings();
       $scope.change();
-      $('.toast').fadeIn(400).delay(3000).fadeOut(400);
+      $('.toast').fadeIn(400).delay(5000).fadeOut(400);
     }
   );
   $scope.change = function() {
@@ -31,9 +31,12 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
     localStorage.setItem("teamSettings", JSON.stringify($scope.settings));
   }
   $scope.restoreSettings = function() {
-    var settings = JSON.parse(localStorage.getItem("teamSettings"));
+    var settings = null;
+    if (localStorage.getItem("teamSettings") != null) {
+      settings = JSON.parse(localStorage.getItem("teamSettings"));
+    }
     if (settings == null) {
-      console.log("Settings is null from localStorage");
+      console.log("Settings are null from localStorage");
     } else {
       $scope.settings = settings;
       console.log(JSON.stringify($scope.settings));
@@ -43,7 +46,7 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
     $("#container").swipe({
       tap: function(event, target) {
         console.log(" tap");
-        location.href="index.html";
+        location.href = "index.html";
       },
       swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
         console.log("BEFORE - Index team: " + $scope.settings.indexTeam + " index year: " + $scope.settings.indexYear + " direction: " + direction);
