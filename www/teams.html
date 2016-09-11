@@ -13,8 +13,6 @@
 </head>
 
 <body>
-  <select ng-model="settings.year" ng-options="o as o for o in years" ng-change="change()"></select>&nbsp;&nbsp;
-  <select ng-model="settings.teamId" ng-options="team.teamId as team.name for team in teams | orderBy:'name'" ng-change="change()"></select>
   <div id="container">
     <img ng-src="{{settings.imageUrl}}" id="image" class="center fit">
   </div>
