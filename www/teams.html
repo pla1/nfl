@@ -3,7 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link href="css/nfl.css" type="text/css" rel="stylesheet" />
+  <link href="css/teams.css" type="text/css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="NFL256x256.png">
   <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
   <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
@@ -13,9 +13,10 @@
 </head>
 
 <body>
-  <span ng-repeat="team in teams"><a href ng-click="team(this)">{{team.teamId}}</a>&nbsp;&nbsp;</span>
+  <select ng-model="settings.year" ng-options="o as o for o in years" ng-change="change()"></select>&nbsp;&nbsp;
+  <select ng-model="settings.teamId" ng-options="team.teamId as team.name for team in teams | orderBy:'name'" ng-change="change()"></select>
   <div id="container">
-    <img src="NFL256x256.png" id="image" class="center fit">
+    <img ng-src="{{settings.imageUrl}}" id="image" class="center fit">
   </div>
   <div class='toast' style='display:none'>Swipe enabled</div>
 </body>
