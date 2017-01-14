@@ -13,10 +13,22 @@
     <h1>NFL Games</h1>
     <table>
         <tr>
+          <th>Date</th>
             <th>Home<br>team</th>
+            <th>Home<br>Points</th>
+            <th>Away<br>team</th>
+            <th>Away<br>Points</th>
+            <th>Week</th>
+            <th>Year</th>
         </tr>
         <tr ng-repeat="game in games">
+          <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
             <td>{{game.homeTeam}}</td>
+            <td>{{game.homePoints}}</td>
+            <td>{{game.awayTeam}}</td>
+            <td>{{game.awayPoints}}</td>
+            <td>{{game.week}}</td>
+            <td>{{game.year}}</td>
         </tr>
     </table>
 </body>
