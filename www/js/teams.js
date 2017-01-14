@@ -23,7 +23,7 @@ app.controller('Controller', function appControllerFunction($scope, $http) {
         }
     );
     $scope.change = function() {
-        if ($scope.years.indexOf($scope.settings.year) != -1) {
+        if ($scope.years.indexOf($scope.settings.year) == -1) {
             $scope.settings.year = $scope.years[0];
         }
         console.log("Year: " + $scope.settings.year + " teamId: " + $scope.settings.teamId);
