@@ -7,6 +7,14 @@
     <script type="text/javascript" src="js/angular-1.5.js"></script>
     <script type="text/javascript" src="js/games.js"></script>
     <title>NFL Games</title>
+    <style>
+    * {
+      font-family: cursive;
+    }
+    .number {
+      text-align: right;
+    }
+    </style>
 </head>
 
 <body>
@@ -27,11 +35,11 @@
             <td>{{game.type}}</td>
             <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
             <td>{{game.homeTeam}}</td>
-            <td>{{game.homePoints}}</td>
+            <td class="number">{{game.homePoints}}</td>
             <td>{{game.awayTeam}}</td>
-            <td>{{game.awayPoints}}</td>
-            <td>{{game.week}}</td>
-            <td>{{game.year}}</td>
+            <td class="number">{{game.awayPoints}}</td>
+            <td class="number">{{game.week}}</td>
+            <td class="number">{{game.year}}</td>
         </tr>
     </table>
 </body>
