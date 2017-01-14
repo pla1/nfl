@@ -22,7 +22,7 @@
             <th>Week</th>
             <th>Year</th>
         </tr>
-        <tr ng-repeat="game in gamesFiltered (games | filter:filterText)">
+        <tr ng-repeat="game in gamesFiltered = (games | filter:filterText)">
           <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
             <td>{{game.homeTeam}}</td>
             <td>{{game.homePoints}}</td>
