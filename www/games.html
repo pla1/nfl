@@ -42,7 +42,7 @@
             <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
             <td ng-class="{ 'winner':game.homePoints > game.awayPoints }">{{game.homeTeam}}</td>
             <td class="number">{{game.homePoints}}</td>
-            <td>{{game.awayTeam}}</td>
+            <td ng-class="{ 'winner':game.awayPoints > game.homePoints }">{{game.awayTeam}}</td>
             <td class="number">{{game.awayPoints}}</td>
             <td class="number">{{game.week}}</td>
             <td class="number">{{game.year}}</td>
