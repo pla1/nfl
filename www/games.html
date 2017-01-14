@@ -17,6 +17,9 @@
     td, th {
       padding: 0.2em;
     }
+    .winner {
+      font-weight: bold;
+    }
     </style>
 </head>
 
@@ -37,7 +40,7 @@
         <tr ng-repeat="game in gamesFiltered = (games | filter:filterText)">
             <td>{{game.type}}</td>
             <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
-            <td>{{game.homeTeam}}</td>
+            <td ng-class="{ 'winner':game.homePoints > game.awayPoints }">{{game.homeTeam}}</td>
             <td class="number">{{game.homePoints}}</td>
             <td>{{game.awayTeam}}</td>
             <td class="number">{{game.awayPoints}}</td>
