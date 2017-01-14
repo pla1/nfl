@@ -14,16 +14,18 @@
     <input ng-model="filterText" title="Filter text" placeholder="Filter text"> {{gamesFiltered.length}} games
     <table>
         <tr>
-          <th>Date</th>
+            <th>Type</th>
+            <th>Date</th>
             <th>Home<br>team</th>
-            <th>Home<br>Points</th>
+            <th>Home<br>points</th>
             <th>Away<br>team</th>
-            <th>Away<br>Points</th>
+            <th>Away<br>points</th>
             <th>Week</th>
             <th>Year</th>
         </tr>
         <tr ng-repeat="game in gamesFiltered = (games | filter:filterText)">
-          <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
+            <td>{{game.type}}</td>
+            <td>{{game.dayOfWeek}} {{game.date}} {{game.gameTime}}</td>
             <td>{{game.homeTeam}}</td>
             <td>{{game.homePoints}}</td>
             <td>{{game.awayTeam}}</td>
