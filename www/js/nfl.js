@@ -63,6 +63,9 @@ function restoreSettings() {
 }
 
 function setImage() {
+  if (settings.index == weeks.length) {
+    settings.index = 0;
+  }
   $("#image").attr("src", weeks[settings.index].imageUrl + "?epoch=" + (new Date).getTime());
   saveSettings();
 }

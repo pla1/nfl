@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html ng-app="app" ng-controller="Controller">
+
+<head>
+  <link href="css/nfl.css" type="text/css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="NFL256x256.png">
+  <script type="text/javascript" src="js/angular-1.5.js"></script>
+  <script type="text/javascript" src="js/games.js"></script>
+  <title>NFL Games</title>
+</head>
+
+<body>
+  <div>
+    <table>
+      <tr>
+        <th>Home<br>team</th>
+      </tr>
+      <tr ng-repeat="games in games">
+        <td>{{game.homeTeam}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
